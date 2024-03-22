@@ -1,0 +1,144 @@
+<p-dialog
+  header="Crear Empleado"
+  [(visible)]="visible"
+  [style]="{ width: '70vw' }"
+  [baseZIndex]="10000"
+  [modal]="true"
+  (onHide)="onDialogHide()"
+  [baseZIndex]="10000"
+>
+  <form [formGroup]="formCreate" (ngSubmit)="createEmployee()">
+    <!-- <div class="flex-column-container">
+      <p-image
+        *ngIf="Picture"
+        src=""
+        alt="Image"
+        width="250"
+        [preview]="true"
+      ></p-image>
+    </div> -->
+    <p-toast></p-toast>
+    <p-fileUpload *ngIf="!Picture" mode="basic" chooseLabel="Choose" name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" accept="image/*"  (onUpload)="onUpload($event)"></p-fileUpload>
+
+    <div
+      class="flex-column-container"
+      [ngClass]="{
+        error: formCreate.get('name')?.invalid && formCreate.get('name')?.dirty
+      }"
+    >
+      <label for="name">Nombre del colaborador</label>
+      <input
+        pInputText
+        id="username"
+        placeholder="Ingresa el nombre del colaborador"
+        formControlName="name"
+      />
+      <small
+        class="input-error"
+        id="username-help"
+        *ngIf="formCreate.get('name')?.invalid && formCreate.get('name')?.dirty"
+      >
+        El nombre debe contener solo caracteres tipo texto</small
+      >
+    </div>
+
+    <div
+      class="flex-column-container"
+      [ngClass]="{
+        error:
+          formCreate.get('identificationCard')?.invalid &&
+          formCreate.get('identificationCard')?.dirty
+      }"
+    >
+      <label for="identificationCard">Numero de identificación</label>
+      <input
+        pInputText
+        pKeyFilter="int"
+        placeholder="Ingresa el numero de documento"
+        formControlName="identificationCard"
+      />
+      <small
+        class="input-error"
+        id="username-help"
+        *ngIf="
+          formCreate.get('identificationCard')?.invalid &&
+          formCreate.get('identificationCard')?.dirty
+        "
+      >
+        Solo se permiten numeros</small
+      >
+    </div>
+
+    <div class="formgrid grid">
+      <div
+        class="flex-column-container field col w-full"
+        [ngClass]="{
+          error:
+            formCreate.get('dateOfAdmission')?.invalid &&
+            formCreate.get('dateOfAdmission')?.dirty
+        }"
+      >
+        <label for="dateOfAdmission">Fecha de ingreso a la compañia: </label>
+        <p-calendar
+          placeholder="Seleccione una fecha"
+          formControlName="dateOfAdmission"
+          [showIcon]="true"
+          dateFormat="dd/mm/yy"
+          dataType="string"
+        ></p-calendar>
+        <small
+          class="input-error"
+          id="username-help"
+          *ngIf="
+            formCreate.get('DateOfAdmission')?.invalid &&
+            formCreate.get('DateOfAdmission')?.dirty
+          "
+        >
+          No has seleccionado una fecha</small
+        >
+      </div>
+
+      <div
+        class="flex-column-container field col w-full"
+        [ngClass]="{
+          error:
+            formCreate.get('cargo')?.invalid && formCreate.get('cargo')?.dirty
+        }"
+      >
+        <label for="cargo">Cargo: </label>
+        <input
+          pInputText
+          pKeyFilter="int"
+          placeholder="Seleccione el cargo"
+          formControlName="cargo"
+        />
+        <small
+          class="input-error"
+          id="username-help"
+          *ngIf="
+            formCreate.get('cargo')?.invalid && formCreate.get('cargo')?.dirty
+          "
+        >
+          Este campo debe ir lleno</small
+        >
+      </div>
+    </div>
+
+    <div class="flex-column-container field col w-full">
+      <label for="state">Estado</label>
+      <p-inputSwitch
+        formControlName="state"
+        trueValue="Activo"
+        falseValue="Inactivo"
+      ></p-inputSwitch>
+    </div>
+    <div class="formgrid grid">
+      <app-s-button
+        class="btn-create"
+        label="Crear Empleado"
+        [disabled]="formCreate.invalid"
+        (click)="createEmployee()"
+      ></app-s-button>
+    </div>
+  </form>
+</p-dialog>

@@ -1,0 +1,24 @@
+<div class="m-4">
+  <h1 class="title bottom-50">Administración de empleados</h1>
+  <app-create-employee
+    class="top=50"
+    [visible]="visibleCreate"
+    (changeVisible)="onCreateEmployeeVisibilityChange($event)"
+  ></app-create-employee>
+  <app-edit-employee
+    class="top=50"
+    [visible]="visibleEdit"
+    [idEmployee]="employeeData"
+    (changeVisible)="onEditEmployeeVisibilityChange($event)"
+  ></app-edit-employee>
+  <div class="flex flex-row flex-wrap">
+
+    <app-s-button  [label]="labelBtn" (click)="showDialogCreate()"></app-s-button>
+  </div>
+  <app-s-table
+    [columns]="columns"
+    [data]="employees"
+    [showEditColumn]="showEditColumn"
+    (editEmployeeData)="openEditView($event)"
+  ></app-s-table>
+</div>

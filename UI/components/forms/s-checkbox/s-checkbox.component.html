@@ -1,0 +1,9 @@
+<div class="flex flex-column gap-2">
+  <p-checkbox
+    [label]="labelText"
+    [ngModel]="selectedValue"
+    (ngModelChange)="onValueChange($event)"
+    [binary]="true"
+    inputId="binary"
+  ></p-checkbox>
+</div>

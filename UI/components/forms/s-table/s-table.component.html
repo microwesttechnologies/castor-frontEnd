@@ -1,0 +1,77 @@
+<div class="card">
+  <p-table
+    #dt1
+    [value]="data"
+    [paginator]="true"
+    [rows]="rowsPerPage"
+    [showCurrentPageReport]="true"
+    [tableStyle]="{ 'min-width': '50rem' }"
+    [currentPageReportTemplate]="currentPageReportTemplate"
+    [rowsPerPageOptions]="rowsPerPageOptions"
+    (sortFunction)="onSort($event)"
+    [customSort]="true"
+    [globalFilterFields]="globalFilterFields"
+    styleClass="p-datatable-striped"
+  >
+    <ng-template pTemplate="caption">
+      <div class="flex">
+        <span class="p-input-icon-left ml-auto">
+          <i class="pi pi-search"></i>
+          <input
+            pInputText
+            type="text"
+            (input)="filterGlobal(dt1, $event, 'contains')"
+            placeholder="Palabra clave de busqueda"
+          />
+        </span>
+
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+          <ng-container *ngIf="col.isSortable">
+            {{ col.name }}
+            <p-sortIcon [field]="col.field"></p-sortIcon>
+          </ng-container>
+          <ng-container *ngIf="!col.isSortable">
+            {{ col.name }}
+          </ng-container>
+        </th>
+        <th *ngIf="showEditColumn"></th>
+        <th *ngIf="showDeleteColumn"></th>
+        <th *ngIf="showInactiveColumn"></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-data>
+      <tr>
+        <td *ngFor="let col of columns">
+          <ng-container *ngIf="col.type === 'html'">
+            <app-s-dynamic-content-component
+              [htmlContent]="col.renderHtml"
+            ></app-s-dynamic-content-component>
+          </ng-container>
+          <ng-container *ngIf="col.type !== 'html'">
+            {{ data[col.field] }}
+          </ng-container>
+        </td>
+        <td *ngIf="showEditColumn">
+          <app-s-button
+            [icon]="icon"
+            (buttonClick)="onEditButtonClick(data.id)"
+          ></app-s-button>
+        </td>
+        <td *ngIf="showDeleteColumn">
+          <app-s-button 
+          
+            [label]="deleteButtonLabel"
+            (buttonClick)="onDeleteButtonClick(data.id)"
+          ></app-s-button>
+        </td>
+        <td *ngIf="showInactiveColumn">
+          <app-s-switch></app-s-switch>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

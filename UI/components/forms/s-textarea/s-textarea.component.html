@@ -1,0 +1,19 @@
+<div class="flex flex-column gap-2">
+  <label [htmlFor]="id">{{ labelText }}</label>
+  <textarea
+    rows="5"
+    cols="30"
+    pInputTextarea
+    [(ngModel)]="value"
+    [id]="id"
+    type="text"
+    class="p-inputtext-sm"
+    [placeholder]="placeholder"
+    [disabled]="!enabled"
+    [ngModel]="value"
+    (ngModelChange)="onValueChange($event)"
+  ></textarea>
+  <small [ngClass]="{ error: errorMessage !== '' }" id="username-help">{{
+    errorMessage
+  }}</small>
+</div>

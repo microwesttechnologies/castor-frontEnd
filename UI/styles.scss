@@ -1,0 +1,23 @@
+@import "../node_modules/primeicons/primeicons.css";
+
+@font-face {
+    font-family: 'Lato';
+    src: url('assets/fonts/Lato/Lato-Light.ttf') format('truetype'),
+         url('assets/fonts/Lato/Lato-Bold.ttf') format('truetype'); 
+    font-weight: normal;
+    font-style: normal;
+  }
+
+//   div:where(.swal2-container).swal2-center>.swal2-popup{
+//      background-color: aqua;
+//      z-index: 9999 !important;
+     
+//    }
+
+.swal2-container {
+     z-index: 20000 !important;
+   }
+
+
+
+  

@@ -1,0 +1,23 @@
+<p-card
+  header="{{ title }}"
+  subheader="{{ subtitle }}"
+  [style]="{
+    width: '360px',
+    height: '70vh',
+    margin: '2vh',
+    position: 'relative'
+  }"
+>
+  <ng-template pTemplate="header">
+    <img src="{{ image }}" class="card-image" [style]="{ height: '30vh' }" />
+  </ng-template>
+  <ng-template pTemplate="footer">
+    <div class="text-center align-items-center justify-content-center">
+      <p-button
+        label="Ingresar ahora"
+        (click)="sendPage()"
+        class="fixed-button"
+      ></p-button>
+    </div>
+  </ng-template>
+</p-card>

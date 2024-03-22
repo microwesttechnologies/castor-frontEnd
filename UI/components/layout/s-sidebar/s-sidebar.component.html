@@ -1,0 +1,45 @@
+<div class="card flex">
+  <p-sidebar (onHide)="sidebarClose()" [(visible)]="sidebarVisible">
+    <ng-template pTemplate="header"></ng-template>
+    <ng-template pTemplate="content">
+      <div class="flex align-items-center justify-content-center">
+        <p-avatar
+          icon="pi pi-user"
+          styleClass="mb-2"
+          size="xlarge"
+          [style]="{ color: '#ffffff' }"
+          shape="circle"
+        ></p-avatar>
+      </div>
+      <div *ngIf="user$ | async as currentUser">
+        <div class="flex align-items-center justify-content-center">
+          {{ greeting }}
+        </div>
+
+        <div class="nameUser align-items-center justify-content-center">
+          {{ currentUser.name }}
+        </div>
+        <div class="flex align-items-center justify-content-center">
+          <strong>{{ currentUser.role }}</strong>
+        </div>
+
+        <div class="menuItem flex align-items-start justify-content-start">
+          <p-panelMenu [model]="items" [multiple]="false"></p-panelMenu>
+        </div>
+      </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+      <div class="flex-wrap">
+        <a
+          class="flex align-items-center justify-content-center cursor-pointer"
+        >
+          <i class="pi pi-power-off" style="font-size: 1rem"></i>
+          <span (click)="logout()" style="margin-left: 0.5rem"
+            >Cerrar Sesión</span
+          >
+        </a>
+      </div>
+    </ng-template>
+  </p-sidebar>
+</div>

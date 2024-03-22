@@ -1,0 +1,214 @@
+.primary-container-load {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+
+  & .container-opacity-load {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #00000017;
+    z-index: 1;
+    opacity: 0.4;
+  }
+
+  & .cssload-container {
+    & *,
+    & > * {
+      box-sizing: border-box;
+    }
+    height: 100vh;
+    width: 100vw;
+    z-index: 2;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    & ul {
+      & li {
+        list-style: none;
+      }
+    }
+
+    & .cssload-flex-container {
+      display: flex;
+      display: -o-flex;
+      display: -ms-flex;
+      display: -webkit-flex;
+      display: -moz-flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+
+      & li {
+        padding: 19px;
+        height: 188px;
+        width: 188px;
+        margin: 56px 38px;
+        position: relative;
+        text-align: center;
+      }
+
+      & .cssload-loading-center {
+        display: inline-block;
+        position: absolute;
+        background: #006023;
+        height: 56px;
+        width: 56px;
+        left: 68px;
+        top: 69px;
+        transform: rotate(45deg);
+        border-radius: 6px;
+        animation: pulse 1.3s ease infinite;
+      }
+
+      & .cssload-loading {
+        display: inline-block;
+        position: relative;
+        width: 141px;
+        height: 141px;
+        margin-top: 6px;
+        transform: rotate(45deg);
+        &::after,
+        &::before {
+          position: absolute;
+          content: "";
+          height: 19px;
+          width: 19px;
+          display: block;
+          top: 0;
+          background: #00cb73;
+          border-radius: 6px;
+        }
+
+        &::after {
+          right: 0;
+          animation: square-tr 2.6s ease infinite;
+          animation-delay: 0.162.5s;
+        }
+
+        &::before {
+          animation: square-tl 2.6s ease infinite;
+          animation-delay: 0.162.5s;
+        }
+
+        &.cssload-two {
+          position: relative;
+          top: -150px;
+          &::after,
+          &::before {
+            bottom: 0;
+            top: initial;
+          }
+
+          &::after {
+            animation: square-br 2.6s ease infinite;
+            animation-direction: reverse;
+          }
+
+          &::before {
+            animation: square-bl 2.6s ease infinite;
+            animation-direction: reverse;
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes square-tl {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  25% {
+    transform: translate(0, 117.5px);
+  }
+
+  50% {
+    transform: translate(117.5px, 117.5px);
+  }
+
+  75% {
+    transform: translate(117.5px, 0);
+  }
+}
+
+@keyframes square-bl {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  25% {
+    transform: translate(0, -117.5px);
+  }
+
+  50% {
+    transform: translate(117.5px, -117.5px);
+  }
+
+  75% {
+    transform: translate(117.5px, 0);
+  }
+}
+
+@keyframes square-tr {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  25% {
+    transform: translate(-117.5px, 0);
+  }
+
+  50% {
+    transform: translate(-117.5px, 117.5px);
+  }
+
+  75% {
+    transform: translate(0, 117.5px);
+  }
+}
+
+@keyframes square-br {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  25% {
+    transform: translate(-117.5px, 0);
+  }
+
+  50% {
+    transform: translate(-117.5px, -117.5px);
+  }
+
+  75% {
+    transform: translate(0, -117.5px);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(inherit) rotate(45deg);
+  }
+
+  75% {
+    transform: scale(0.25) rotate(45deg);
+  }
+}

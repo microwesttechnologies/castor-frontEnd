@@ -1,0 +1,13 @@
+<div class="flex flex-column gap-2 mt-4">
+  <label htmlFor="username">{{ label }}</label>
+  <p-calendar
+    [(ngModel)]="date"
+    [touchUI]="true"
+    [placeholder]="placeholder"
+    [readonlyInput]="true"
+    [style]="{
+      width: '100%',
+      position: 'relative'
+    }"
+  ></p-calendar>
+</div>

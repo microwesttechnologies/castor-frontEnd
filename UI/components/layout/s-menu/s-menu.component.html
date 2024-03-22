@@ -1,0 +1,11 @@
+<p-menubar [model]="items">
+  <ng-template pTemplate="start">
+    <div class="logo">
+      <img src="{{ image }}" height="40" class="mr-2" routerLink="/dashboard" />
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="end">
+    <h1 class="username">!Hola {{ name }}</h1>
+  </ng-template>
+</p-menubar>

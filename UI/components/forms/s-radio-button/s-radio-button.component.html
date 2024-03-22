@@ -1,0 +1,21 @@
+<div class="flex flex-column gap-3">
+  <div class="flex">
+    <div
+      *ngFor="let answer of answers"
+      class="field-checkbox"
+      class="mr-4 mt-2"
+    >
+      <p-radioButton
+        [inputId]="answer.key"
+        name="answers"
+        [value]="answer"
+        [(ngModel)]="selectedAnswer"
+        (ngModelChange)="onValueChange($event)"
+      ></p-radioButton
+      ><label [for]="answer.key" class="ml-2">{{ answer.name }}</label>
+    </div>
+    <small [ngClass]="{ error: errorMessage !== '' }" id="username-help">{{
+      errorMessage
+    }}</small>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="primary-content-image-map flex justify-content-center">
+  <img
+    [attr.height]="configImage.height || '100%'"
+    [attr.width]="configImage.width || '100%'"
+    [src]="configImage.src"
+  />
+  <ng-container *ngFor="let coordinate of coordinates; index as i">
+    <div
+      (click)="selectedCoordinate(coordinate, i)"
+      [style]="getCoordinateStyle(coordinate)"
+      class="item-image-map"
+    ></div>
+    <h1>HOLA</h1>
+  </ng-container>
+</div>

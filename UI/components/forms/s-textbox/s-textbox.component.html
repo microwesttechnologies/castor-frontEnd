@@ -1,0 +1,34 @@
+<div class="flex flex-column gap-2">
+  <label [htmlFor]="id">{{ labelText }}</label>
+  <ng-template #OpenTextTemplate>
+    <input
+      pInputText
+      [id]="id"
+      type="text"
+      class="p-inputtext-sm"
+      [placeholder]="placeholder"
+      [disabled]="!enabled"
+      [maxlength]="maxlength"
+      [ngModel]="value"
+      (ngModelChange)="onValueChange($event)"
+    />
+  </ng-template>
+  <ng-template #PkeyFilterTemplate>
+    <input
+      pInputText
+      [id]="id"
+      type="text"
+      class="p-inputtext-sm"
+      [placeholder]="placeholder"
+      [disabled]="!enabled"
+      [ngModel]="value"
+      (ngModelChange)="onValueChange($event)"
+    />
+  </ng-template>
+  <ng-container>
+    <ng-container *ngTemplateOutlet="PkeyFilterTemplate"></ng-container>
+  </ng-container>
+  <small [ngClass]="{ error: errorMessage !== '' }" id="username-help">{{
+    errorMessage
+  }}</small>
+</div>
